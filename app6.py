@@ -44,7 +44,7 @@ transform = transforms.Compose([
 def get_models():
     model_path = hf_hub_download(
         repo_id="Nithin-nani/vitamin_defency",
-        filename="vgg16_food_classifier.pth"
+        filename="vgg_model.pth"
     )
     model = models.vgg16(weights=None)
     model.classifier[6] = nn.Linear(model.classifier[6].in_features, len(food_categories))
