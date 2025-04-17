@@ -51,9 +51,13 @@ def get_models():
     model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
     model.eval()
 
-    embedding_model = SentenceTransformer('sentence-transformers/paraphrase-albert-small-v2')
-    text_generator = pipeline("text-generation", model="tiiuae/falcon-rw-1b", device=0 if torch.cuda.is_available() else -1)
+    #embedding_model = SentenceTransformer('sentence-transformers/paraphrase-albert-small-v2')
+    #text_generator = pipeline("text-generation", model="tiiuae/falcon-rw-1b", device=0 if torch.cuda.is_available() else -1)
+    # Better embedding model
+    embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
+    # Smaller and fast text generator
+    text_generator = pipeline("text-generation", model="distilgpt2", device=0 if torch.cuda.is_available() else -1)
     return model, embedding_model, text_generator
 
 model, embedding_model, generator = get_models()
