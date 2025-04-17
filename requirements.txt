@@ -1,10 +1,10 @@
-torch
-numpy
-pandas
 streamlit
+torch
 torchvision
-pymupdf
-faiss-cpu
+Pillow
 transformers
-langchain
 sentence-transformers
+langchain
+PyMuPDF
+faiss-cpu
+huggingface_hub
